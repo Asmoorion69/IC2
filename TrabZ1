@@ -1,0 +1,137 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <algorithm>
+#include <iomanip>
+
+using namespace std;
+int main ()
+{
+    //Escolha de Cálculo
+    int choice = -1;
+    float vetor [5];
+        for (int i = 0; i < 5 ; i++)
+        {
+            cout << "Digite suas cinco notas: ";
+            cin >> vetor [i];
+        }
+
+    //Menu Display
+    cout << "Escolha a opção que deseja realizar" << endl << endl;
+    cout << endl << "1. Média";
+    cout << endl << endl << "2. Desvio Padrão" ;
+    cout << endl << endl << "3. Determinar Maior e Menor Valor";
+    cout << endl << endl << "4. Leitura de Números" << endl;
+
+    //Loop para escolher o tipo de Cálculo
+    while(1){
+        cin >> choice;
+
+    //Escada de if-else
+        if (choice == 1)
+        {
+            cout << "Você escolheu Média (Pesos: 3, 3, 2, 1, 1): " << endl;
+    
+    //Média Simples e Ponderada
+    {
+        //Declaração de Variavel 
+        int escolha;
+        float media =((vetor[1]+vetor[2]+vetor[3]+vetor[4]+vetor[5])/5);
+        float mediaP =(((vetor[1] * 3)+(vetor[2]*3)+(vetor[3]*2)+(vetor[4]*1)+(vetor[5]*1))/5);
+
+        //Entrada de Dados
+        cout << "Qual a Média desejada?";
+        cout << endl << "1- Aritmética";
+        cout << endl << "2- Ponderada" << endl;
+        cin >> escolha;
+
+        //Processamento 
+        {
+            if (escolha == 1)
+                cout << "Média Aritimética: " << fixed << setprecision(2) << media << endl;
+            else
+
+            if (escolha == 2)
+                cout << "Média Ponderada: " << fixed << setprecision(2) << mediaP << endl;
+            else
+                cout << "Opção Inválida!!" << endl;
+        }
+    break;
+    }
+        }
+        //Desvio Padrão 
+        else if (choice == 2)
+        {
+            cout << "Você escolheu Desvio Padrão: ";
+            {
+            float m, media, sigma, p;
+            media = 0;
+            m = 0;
+            sigma = 0;
+            p = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                m = m + vetor[i];
+            }
+            media = m / 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                p += pow((vetor [i] - media), 2);
+            }
+            sigma = p / 5.0;
+            sigma = sqrt (sigma);
+            cout << "O resulta do é: " << fixed << setprecision(2) << sigma << endl;
+            
+            }
+            break;
+
+        }
+        //Determinar maior e menor valor
+        else if (choice == 3)
+        {
+            cout << "Você escolheu Determinar Maior e Menor Valor" << endl;
+            {
+                int maiorV = -99999999;
+                int menorV =  99999999;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (vetor[i] < menorV)
+                    {
+                        menorV = vetor[i];
+                    }
+                    if (vetor[i] > maiorV)
+                    {
+                        maiorV = vetor[i];
+                    }
+                }
+                cout << "Maior Valor:  " << endl << maiorV << endl;
+                cout << "Menor Valor:  " << endl << menorV << endl;
+            break;
+            }
+
+        }
+        //Leitura do Número
+        else if (choice == 4)
+        {
+            sort(vetor, vetor+5);      //ordem crescente
+            cout << "Você escolheu Leitura dos Números (eles serão apresentados em ordem crescente):" << endl <<  "[ " << endl;
+            for(int i = 0; i < 5; i++)
+            {
+                cout << vetor[i] << ", ";
+            }
+            cout << "]" << endl;
+        }
+        //Termino do loop
+        else 
+        {
+            cout << "Comando Inválido" << endl;
+        }
+   
+            break;
+        
+     }
+}   
+
+
